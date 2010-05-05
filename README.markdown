@@ -1,0 +1,10 @@
+= preposterous 
+
+I'm hoping that I will stick to this and it will become a very functional Ruby based API for the [Posterous](http://posterous.com) service.
+
+Since I've never really done anything like this, I am going to use [John Nunemaker's](http://github.com/jnunemaker) [Twitter gem](http://github.com/jnunemaker/twitter) design as an influence.
+
+== Copyright
+
+Copyright (c) 2010 Ray Hernandez. See LICENSE for details.
+
