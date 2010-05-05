@@ -1,10 +1,10 @@
 module Preposterous
   class Request
     extend Forwardable
-
-    attr_reader :client, :method, :path, :options
     def_delegators :client, :get, :post
-
+  
+    attr_reader :client, :method, :path, :options
+    
     def self.get(client, path, options={})
       new(client, :get, path, options).perform
     end

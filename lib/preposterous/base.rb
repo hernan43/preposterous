@@ -11,6 +11,8 @@ module Preposterous
 
     def getsites
       perform_post("/api/getsites")
+      # parse out sites? not sure how I want the API to look
+      # for this. I have a couple of competing ideas...
     end
 
     def newpost

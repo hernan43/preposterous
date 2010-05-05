@@ -4,7 +4,7 @@ require 'forwardable'
 module Preposterous
 
   def self.make_friendly(response)
-    Crack::XML.parse(response.body)[:rsp]
+    Crack::XML.parse(response.body)["rsp"]
   end
 
 end

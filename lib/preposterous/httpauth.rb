@@ -1,7 +1,6 @@
 module Preposterous
   class HTTPAuth
     include HTTParty
-
     format :xml
 
     attr_reader :username, :password, :options
