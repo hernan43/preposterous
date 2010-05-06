@@ -16,7 +16,8 @@ module Preposterous
       response["site"] || nil
     end
 
-    def newpost
+    def newpost(fields={})
+      response = perform_post("/api/newpost", fields)
     end
 
     def updatepost
