@@ -15,5 +15,3 @@ directory = File.expand_path(File.dirname(__FILE__))
 require File.join(directory, "preposterous", "base")
 require File.join(directory, "preposterous", "httpauth")
 require File.join(directory, "preposterous", "request")
-require File.join(directory, "preposterous", "post")
-
