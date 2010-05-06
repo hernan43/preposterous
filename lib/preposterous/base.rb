@@ -10,9 +10,10 @@ module Preposterous
     end
 
     def getsites
-      perform_post("/api/getsites")
+      response = perform_get("/api/getsites")
       # parse out sites? not sure how I want the API to look
       # for this. I have a couple of competing ideas...
+      response["site"] || nil
     end
 
     def newpost
