@@ -2,7 +2,10 @@
 
 I'm hoping that I will stick to this and it will become a very functional Ruby based API for the Posterous(http://posterous.com) service.
 
-Since I've never really done anything like this, I am going to use John Nunemaker's(http://github.com/jnunemaker) Twitter gem(http://github.com/jnunemaker/twitter) design as an influence.
+= what works?
+
+Right now it can get a list of posterous sites and post to posterous sites. 
+Media uploads are working for posting.
 
 == examples
   
@@ -10,7 +13,11 @@ See the post.rb example in the examples directory.
 
 http://github.com/hernan43/preposterous/tree/master/examples/post.rb
 
-== Copyright
+== copyright?
+
+Since I've never really done anything like this, I am going to use John Nunemaker's(http://github.com/jnunemaker) Twitter gem(http://github.com/jnunemaker/twitter) design as an influence.
+
+Also when I say "influence" I mean this is basically a really jacked up fork of the jnunemaker twitter gem.
 
 Copyright (c) 2010 Ray Hernandez. See LICENSE for details.
 
