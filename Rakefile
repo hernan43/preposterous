@@ -11,8 +11,9 @@ begin
 
     gem.add_dependency("httparty", ">= 0.5.2")
   end
+
+Jeweler::GemcutterTasks.new
+
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"
 end
-
-Jeweler::GemcutterTasks.new
