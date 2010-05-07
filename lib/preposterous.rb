@@ -1,6 +1,5 @@
 require 'httparty'
 require 'forwardable'
-require 'hashie'
 require 'cgi'
 require 'mime/types'
 
