@@ -1,19 +1,18 @@
-require "rake"
+require 'rubygems'
+require 'rake'
+
 begin
-  require "jeweler"
+  require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name              = "preposterous"
-    gem.summary           = %Q{wrapper for the posterous api}
-    gem.email             = "hernan43@gmail.com"
-    gem.homepage          = "http://github.com/hernan43/preposterous"
-    gem.authors           = ["Ray Hernandez"]
-    gem.files             = FileList["[A-Z]*", "{examples,lib}/**/*"]
-
-    gem.add_dependency("httparty", ">= 0.5.2")
+    gem.name = "preposterous"
+    gem.summary = %Q{a wrapper library for the Posterous API}
+    gem.description = %Q{This gem supports posting and listing sites on Posterous}
+    gem.email = "hernan43@gmail.com"
+    gem.homepage = "http://github.com/hernan43/posterous"
+    gem.authors = ["Ray Hernandez"]
+    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
-
-Jeweler::GemcutterTasks.new
-
+  Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler not available. Install it with: gem install jeweler"
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
