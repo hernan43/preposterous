@@ -18,7 +18,6 @@ module Preposterous
     end
 
     def uri
-      #puts "Options: #{options}\n\n"
       @uri ||= begin
         uri = URI.parse(path)
         if options[:fields] && options[:fields] != {}

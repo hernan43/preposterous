@@ -39,7 +39,7 @@ module Preposterous
       boundary = Time.now.to_i.to_s(16)
       body = ""
       files.each do |file|
-        esc_key = CGI.escape("media")
+        esc_key = "media[]"
         body << "--#{boundary}#{CRLF}"
         if file.respond_to?(:read)
           body << "Content-Disposition: form-data; name=\"#{esc_key}\"; filename=\"#{File.basename(file.path)}\"#{CRLF}"
