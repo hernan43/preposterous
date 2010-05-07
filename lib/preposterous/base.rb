@@ -26,10 +26,20 @@ module Preposterous
       response["post"] if not response.nil?
     end
 
+    # TODO: write readposts method
+    def readposts
+    end    
+
+    # TODO: write update method
     def updatepost
     end    
 
+    # TODO: write comment method
     def newcomment
+    end    
+
+    # TODO: write gettags method
+    def gettags
     end    
 
     protected
