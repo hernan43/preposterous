@@ -18,6 +18,9 @@ module Preposterous
     end
 
     def post(uri, body={}, headers={})
+      pp uri
+      pp headers
+      #pp body
       self.class.post(uri, :body => body, :headers => headers, :basic_auth => basic_auth)
     end
 

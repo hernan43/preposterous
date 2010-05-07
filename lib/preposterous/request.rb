@@ -21,8 +21,8 @@ module Preposterous
       @uri ||= begin
         uri = URI.parse(path)
 
-        if options[:query] && options[:query] != {}
-          uri.query = to_query(options[:query])
+        if options[:fields] && options[:fields] != {}
+          uri.query = to_query(options[:fields])
         end
 
         uri.to_s
@@ -40,7 +40,7 @@ module Preposterous
     end
 
     def perform_post
-      post(uri, options[:body], options[:headers])
+      post(uri, options[:post_body], options[:headers])
     end
 
     def to_query(options)

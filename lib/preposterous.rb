@@ -1,11 +1,14 @@
 require 'httparty'
 require 'forwardable'
 require 'hashie'
+require 'pp'
+require 'cgi'
+require 'mime/types'
 
 module Preposterous
 
   def self.make_friendly(response)
-    Crack::XML.parse(response.body)["rsp"]
+    Crack::XML.parse(response.body)["rsp"] if not response.nil?
   end
 
 end

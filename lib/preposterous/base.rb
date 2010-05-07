@@ -13,11 +13,13 @@ module Preposterous
       response = perform_get("/api/getsites")
       # parse out sites? not sure how I want the API to look
       # for this. I have a couple of competing ideas...
-      response["site"] || nil
+      response["site"] if not response.nil?
     end
 
-    def newpost(fields={})
-      response = perform_post("/api/newpost", fields)
+    def newpost(fields={}, *files)
+      response = perform_post("/api/newpost", :fields => build_multipart_bodies(*files).merge(fields))
+      # return post attrs
+      response["post"] if not response.nil?
     end
 
     def updatepost
@@ -25,6 +27,32 @@ module Preposterous
 
     def newcomment
     end    
+
+    protected
+
+    CRLF = "\r\n"
+    def build_multipart_bodies(*files)
+      boundary = Time.now.to_i.to_s(16)
+      body = ""
+      files.each do |file|
+        esc_key = CGI.escape("media[]")
+        body << "--#{boundary}#{CRLF}"
+        if file.respond_to?(:read)
+          body << "Content-Disposition: form-data; name=\"#{esc_key}\"; filename=\"#{File.basename(file.path)}\"#{CRLF}"
+          body << "Content-Type: #{MIME::Types.type_for(file.path).to_s}#{CRLF*2}"
+          body << file.read
+        else
+          body << "Content-Disposition: form-data; name=\"#{esc_key}\"#{CRLF*2}#{file}"
+        end
+        body << CRLF
+      end
+      body << "--#{boundary}--#{CRLF*2}"
+      {
+        :post_body => body,
+        :headers => {"Content-Type" => "multipart/form-data; boundary=#{boundary}"}
+      }
+    end
+
 
     private
 
