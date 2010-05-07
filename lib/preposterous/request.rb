@@ -18,9 +18,9 @@ module Preposterous
     end
 
     def uri
+      #puts "Options: #{options}\n\n"
       @uri ||= begin
         uri = URI.parse(path)
-
         if options[:fields] && options[:fields] != {}
           uri.query = to_query(options[:fields])
         end
@@ -40,12 +40,12 @@ module Preposterous
     end
 
     def perform_post
-      post(uri, options[:post_body], options[:headers])
+      post(uri, options[:body], options[:headers])
     end
 
     def to_query(options)
       options.inject([]) do |collection, opt|
-        collection << "#{opt[0]}=#{opt[1]}"
+        collection << "#{CGI.escape opt[0].to_s}=#{CGI.escape opt[1].to_s}"
         collection
       end * '&'
     end
