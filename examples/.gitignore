@@ -1,3 +1,5 @@
 dont_git_me.rb
 *.jpg
 *.png
+*.ppt
+*.xls
