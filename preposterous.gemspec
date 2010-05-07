@@ -27,7 +27,8 @@ Gem::Specification.new do |s|
      "lib/preposterous.rb",
      "lib/preposterous/base.rb",
      "lib/preposterous/httpauth.rb",
-     "lib/preposterous/request.rb"
+     "lib/preposterous/request.rb",
+     "preposterous.gemspec"
   ]
   s.homepage = %q{http://github.com/hernan43/posterous}
   s.rdoc_options = ["--charset=UTF-8"]
