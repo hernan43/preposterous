@@ -1,7 +1,6 @@
 require 'httparty'
 require 'forwardable'
 require 'hashie'
-require 'pp'
 require 'cgi'
 require 'mime/types'
 
