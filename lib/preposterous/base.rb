@@ -18,30 +18,26 @@ module Preposterous
 
     def newpost(fields={}, *files)
       # create options hash
-      options = {:fields => fields}
-      options = build_multipart_bodies(*files).merge(options) if files
-
+      options = generate_post_options(fields, *files)
       response = perform_post("/api/newpost", options)
       # return post attrs
       response["post"] if not response.nil?
     end
+
+    # TODO: refactor this and the newpost method
+    def updatepost(fields={}, *files)
+      # create options hash
+      options = generate_post_options(fields, *files)
+      response = perform_post("/api/updatepost", options)
+      # return post attrs
+      response["post"] if not response.nil?
+    end    
 
     # this is BROKEN
     # for some reason the XML will not parse
     # the CDATA fields are throwing off the parser
     def readposts(options={})
       response = perform_get("/api/readposts")
-      response["post"] if not response.nil?
-    end    
-
-    # TODO: refactor this and the newpost method
-    def updatepost(fields={}, *files)
-      # create options hash
-      options = {:fields => fields}
-      options = build_multipart_bodies(*files).merge(options) if files
-
-      response = perform_post("/api/updatepost", options)
-      # return post attrs
       response["post"] if not response.nil?
     end    
 
@@ -55,6 +51,12 @@ module Preposterous
     end    
 
     protected
+
+    def generate_post_options(fields, *files)
+      # create options hash
+      options = {:fields => fields}
+      options = build_multipart_bodies(*files).merge(options) if files
+    end
 
     CRLF = "\r\n"
     def build_multipart_bodies(*files)
