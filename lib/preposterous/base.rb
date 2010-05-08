@@ -41,8 +41,12 @@ module Preposterous
       response["post"] if not response.nil?
     end    
 
-    # TODO: write comment method
-    def newcomment
+    # for some reason posterous does not recognize the post_id
+    # i think there maybe something wrong with their API
+    # at least I hope it isn't me
+    def newcomment(options={})
+      response = perform_post("/api/newcomment")
+      response["comment"] if not response.nil?
     end    
 
     def gettags
