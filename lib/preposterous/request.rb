@@ -20,7 +20,7 @@ module Preposterous
     def uri
       @uri ||= begin
         uri = URI.parse(path)
-        if options[:fields] && options[:fields] != {}
+        if not options.nil? and options.key?(:fields) and options[:fields] != {}
           uri.query = to_query(options[:fields])
         end
 

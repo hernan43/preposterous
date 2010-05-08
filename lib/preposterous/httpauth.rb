@@ -5,12 +5,19 @@ module Preposterous
 
     attr_reader :username, :password, :options
 
+    class CredentialsError  < StandardError; end
+
     def initialize(username, password, options={})
       @username, @password = username, password
       @options = {:ssl => false}.merge(options)
       # posterous' API URL is http://posterous.com/api
       options[:api_endpoint] ||= "posterous.com"
       self.class.base_uri "http#{'s' if options[:ssl]}://#{options[:api_endpoint]}"
+    end
+
+    def self.initialize_from_hash(options={})
+      unless options.key?(:username) and options.key?(:password) then raise CredentialsError, "You must specify both username and password" end
+      new(options[:username], options[:password], options)
     end
 
     def get(uri, headers={})

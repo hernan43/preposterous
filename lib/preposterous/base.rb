@@ -55,7 +55,7 @@ module Preposterous
     def generate_post_options(fields, *files)
       # create options hash
       options = {:fields => fields}
-      options = build_multipart_bodies(*files).merge(options) if files
+      options = build_multipart_bodies(*files).merge(options) if files.length > 0
     end
 
     CRLF = "\r\n"
