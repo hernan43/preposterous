@@ -27,12 +27,22 @@ module Preposterous
     end
 
     # this is BROKEN
+    # for some reason the XML will not parse
+    # the CDATA fields are throwing off the parser
     def readposts(options={})
       response = perform_get("/api/readposts")
+      response["post"] if not response.nil?
     end    
 
-    # TODO: write update method
-    def updatepost
+    # TODO: refactor this and the newpost method
+    def updatepost(fields={}, *files)
+      # create options hash
+      options = {:fields => fields}
+      options = build_multipart_bodies(*files).merge(options) if files
+
+      response = perform_post("/api/updatepost", options)
+      # return post attrs
+      response["post"] if not response.nil?
     end    
 
     # TODO: write comment method
