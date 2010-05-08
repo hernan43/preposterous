@@ -1,9 +1,11 @@
 module Preposterous
   class Post < Preposterous::Base
-    attr_reader :attributes
-    attr_reader :client
+    attr_reader   :attributes
+    attr_reader   :client
+    attr_accessor :files
 
     def initialize(attributes={})
+      @files = []
       @attributes = attributes
     end
 
@@ -21,9 +23,9 @@ module Preposterous
 
     def save
       if self.is_new?
-        Preposterous::Base.client.newpost(@attributes)
+        Preposterous::Base.client.newpost(@attributes, *@files)
       else
-        Preposterous::Base.client.updatepost(@attributes)
+        Preposterous::Base.client.updatepost(@attributes, *@files)
       end
     end
 

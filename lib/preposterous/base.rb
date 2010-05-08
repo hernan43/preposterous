@@ -54,12 +54,15 @@ module Preposterous
 
     def generate_post_options(fields, *files)
       # create options hash
-      options = {:fields => fields}
-      options = build_multipart_bodies(*files).merge(options) if files.length > 0
+      options = {:headers => {}, :body => "", :fields => fields}
+      options = options.merge(build_multipart_bodies(*files))
     end
 
     CRLF = "\r\n"
     def build_multipart_bodies(*files)
+      # bug out early if there are no files
+      return {} if files.length < 1
+      
       boundary = Time.now.to_i.to_s(16)
       body = ""
       files.each do |file|
