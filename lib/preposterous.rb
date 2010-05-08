@@ -4,7 +4,7 @@ require 'cgi'
 require 'mime/types'
 
 module Preposterous
-  
+
   class InvalidEmailOrPassword  < StandardError; end
   class InvalidSiteId           < StandardError; end
   class UserDoesNotHaveAccess   < StandardError; end
@@ -24,30 +24,30 @@ module Preposterous
   def self.raise_errors(response)
     response.body =~ /code="(\d+)" msg="(.*)"/
     code = $1.to_i
-    # going to pass this to the exception at some point
+    # going to pass this to the exception at some point... maybe
     msg = $2
 
     case code
       when 3001
-        raise InvalidEmailOrPassword
+        raise InvalidEmailOrPassword, msg
       when 3002
-        raise InvalidSiteId
+        raise InvalidSiteId, msg
       when 3003
-        raise UserDoesNotHaveAccess
+        raise UserDoesNotHaveAccess, msg
       when 3004
-        raise UnableToSave
+        raise UnableToSave, msg
       when 3005
-        raise UnableToFindObject
+        raise UnableToFindObject, msg
       when 3006
-        raise InvalidDate
+        raise InvalidDate, msg
       when 3007
-        raise InvalidPostId
+        raise InvalidPostId, msg
       when 3008
-        raise CommentsDisabled
+        raise CommentsDisabled, msg
       when 3009
-        raise UnableToSaveComment
+        raise UnableToSaveComment, msg
       when 3010
-        raise ApiRateLimitReached
+        raise ApiRateLimitReached, msg
     end
   end
 
