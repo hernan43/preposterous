@@ -26,8 +26,9 @@ module Preposterous
       response["post"] if not response.nil?
     end
 
-    # TODO: write readposts method
-    def readposts
+    # this is BROKEN
+    def readposts(options={})
+      response = perform_get("/api/readposts")
     end    
 
     # TODO: write update method
@@ -38,8 +39,9 @@ module Preposterous
     def newcomment
     end    
 
-    # TODO: write gettags method
     def gettags
+      response = perform_get("/api/gettags")
+      response["tag"] if not response.nil?
     end    
 
     protected
