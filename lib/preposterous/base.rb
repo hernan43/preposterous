@@ -34,15 +34,12 @@ module Preposterous
 
     # this is BROKEN
     # for some reason the XML will not parse
-    # the CDATA fields are throwing off the parser
+    # the CDATA fields are throwing off the parser(REXML)
     def readposts(fields={})
       response = perform_get("/api/readposts", :fields => fields)
       response["post"] if not response.nil?
     end    
 
-    # for some reason posterous does not recognize the post_id
-    # i think there maybe something wrong with their API
-    # at least I hope it isn't me
     def newcomment(fields={})
       response = perform_post("/api/newcomment", :fields => fields)
       response["comment"] if not response.nil?
