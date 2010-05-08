@@ -23,6 +23,7 @@ module Preposterous
 
   def self.raise_errors(response)
     response.body =~ /code="(\d+)" msg="(.*)"/
+
     code = $1.to_i
     # going to pass this to the exception at some point... maybe
     msg = $2

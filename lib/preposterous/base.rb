@@ -24,7 +24,6 @@ module Preposterous
       response["post"] if not response.nil?
     end
 
-    # TODO: refactor this and the newpost method
     def updatepost(fields={}, *files)
       # create options hash
       options = generate_post_options(fields, *files)
@@ -36,16 +35,16 @@ module Preposterous
     # this is BROKEN
     # for some reason the XML will not parse
     # the CDATA fields are throwing off the parser
-    def readposts(options={})
-      response = perform_get("/api/readposts")
+    def readposts(fields={})
+      response = perform_get("/api/readposts", :fields => fields)
       response["post"] if not response.nil?
     end    
 
     # for some reason posterous does not recognize the post_id
     # i think there maybe something wrong with their API
     # at least I hope it isn't me
-    def newcomment(options={})
-      response = perform_post("/api/newcomment")
+    def newcomment(fields={})
+      response = perform_post("/api/newcomment", :fields => fields)
       response["comment"] if not response.nil?
     end    
 
