@@ -1,31 +1,29 @@
 module Preposterous
   class Post < Preposterous::Base
-    attr_reader   :attributes
-    attr_reader   :client
-    attr_accessor :files
+    attr_reader   :client, :attributes
+    attr_accessor :site_id, :title, :body, :autopost, :private, :date, :tags, :source, :sourceLink, :media
 
     def initialize(attributes={})
       @files = []
-      @attributes = attributes
     end
 
-    def [](key)
-      @attributes[key.to_sym]
-    end
-
-    def []=(key, value)
-      @attributes[key.to_sym] = value
+    def attributes
+      Hash[self.instance_variables.collect do |var| 
+        key = var.to_s.gsub(/@/, '').to_sym        
+        [key,instance_variable_get(var)]
+        end
+      ]
     end
 
     def is_new?
-      @attributes[:post_id].nil?
+      post_id.nil?
     end
 
     def save
       if self.is_new?
-        Preposterous::Base.client.newpost(@attributes, *@files)
+        Preposterous::Base.client.newpost(attributes, *@files)
       else
-        Preposterous::Base.client.updatepost(@attributes, *@files)
+        Preposterous::Base.client.updatepost(attributes, *@files)
       end
     end
 
