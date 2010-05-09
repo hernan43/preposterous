@@ -4,8 +4,7 @@ I'm hoping that I will stick to this and it will become a very functional Ruby b
 
 = what works?
 
-Right now it can get a list of posterous sites and post to posterous sites. 
-Media uploads are working for posting.
+Most of the API is implemented. I'm currently working on an ActiveRecord style interface. So you'll be able to post using objects instead of calling methods.
 
 == examples
   
