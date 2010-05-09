@@ -78,3 +78,23 @@ posterous.updatepost(fields, *files)
 #
 
 puts posterous.gettags
+
+#
+# using the object style of posting
+#
+Preposterous::Base.establish_client(
+  :client_type => Preposterous::HTTPAuth,
+  :username => 'fake@userna.me',
+  :password => 'password'
+)
+
+p = Preposterous::Post.new
+
+p.site_id= 1234567
+p.title = "Test from object poster"
+p.body = "This is a test"
+p.autopost = 0
+p.media << File.open("examples/one.png")
+p.media << File.open("examples/two.png")
+# save posts the... uh... post
+p.save

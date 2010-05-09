@@ -19,6 +19,7 @@ module Preposterous
     def newpost(fields={}, *files)
       # create options hash
       options = generate_post_options(fields, *files)
+      puts options
       response = perform_post("/api/newpost", options)
       # return post attrs
       response["post"] if not response.nil?
