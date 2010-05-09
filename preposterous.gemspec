@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{preposterous}
-  s.version = "0.0.5"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ray Hernandez"]
@@ -26,7 +26,9 @@ Gem::Specification.new do |s|
      "examples/post.rb",
      "lib/preposterous.rb",
      "lib/preposterous/base.rb",
+     "lib/preposterous/connection.rb",
      "lib/preposterous/httpauth.rb",
+     "lib/preposterous/post.rb",
      "lib/preposterous/request.rb",
      "preposterous.gemspec"
   ]
